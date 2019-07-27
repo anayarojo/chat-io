@@ -3,7 +3,7 @@ Chat utilizando node, socket io y android con kotlin
 
 ## Preview
 
-![App-Login](./images/app-01.png =100)
+![App-Login](./images/app-01.png)
 
 ![App-Chat-1](./images/app-02.png)
 
