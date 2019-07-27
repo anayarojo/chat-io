@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 
 class MessageAdapter(var context: Context, items: ArrayList<Message>) : BaseAdapter() {
@@ -28,8 +29,13 @@ class MessageAdapter(var context: Context, items: ArrayList<Message>) : BaseAdap
         }
 
         val item = getItem(position)as Message
+
+        holder?.tvUser?.text = item.user
         holder?.tvText?.text = item.text
         holder?.tvDate?.text = item.date
+
+        val resourceImage = context.getResources().getIdentifier("ic_user_profile_${item.avatar}", "drawable", context.getPackageName())
+        holder?.ivAvatar?.setImageResource(resourceImage)
 
         return  view!!
     }
@@ -47,12 +53,16 @@ class MessageAdapter(var context: Context, items: ArrayList<Message>) : BaseAdap
     }
 
     private class ViewHolder(view: View) {
+        var ivAvatar: ImageView? = null
+        var tvUser: TextView? = null
         var tvText: TextView? = null
         var tvDate: TextView? = null
 
         init {
-            this.tvText = view.findViewById(R.id.tvText)
-            this.tvDate = view.findViewById(R.id.tvDate)
+            this.ivAvatar = view.findViewById(R.id.template_ivAvatar)
+            this.tvUser = view.findViewById(R.id.template_tvUser)
+            this.tvText = view.findViewById(R.id.template_tvText)
+            this.tvDate = view.findViewById(R.id.template_tvDate)
         }
     }
 }
